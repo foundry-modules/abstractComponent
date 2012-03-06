@@ -11,9 +11,10 @@
  *
  */
 
-window.abstractComponent = function(name) {
+window.abstractComponent = function() {
 
-	var self = window[name] = function() {
+	var self = function() {
+
 		self.queue.push({
 			type: "run",
 			context: this,
@@ -21,7 +22,7 @@ window.abstractComponent = function(name) {
 		});
 	}
 
-	// Remap
+	// Remap to run
 	self.run = self;
 
 	// Where the list of function calls are stored.
@@ -46,18 +47,22 @@ window.abstractComponent = function(name) {
 		var methods = "library,script,stylesheet,language,template,view,done,always,fail,progress".split(","),
 			instance = {};
 
-		for (i in methods) {
+		var i;
+		for(i=0; i<methods.length; i++) {
 
 			var method = methods[i];
 
 			instance[method] = (function(method) {
 
 				return function() {
+
 					chain.push({
 						method: method,
 						context: this,
 						args: arguments
 					});
+
+					return instance;
 				};
 
 			}(method)); // Creates a closure for the method variable.
@@ -67,4 +72,6 @@ window.abstractComponent = function(name) {
 
 		return instance;
 	}
+
+	return self;
 }
