@@ -16,7 +16,7 @@ window.abstractComponent = function() {
 	var self = function() {
 
 		self.queue.push({
-			type: "run",
+			method: "run",
 			context: this,
 			args: arguments
 		});
