@@ -13,13 +13,16 @@
 
 window.abstractComponent = function(name) {
 
-	var self.run = self = window[name] = function() {
+	var self = window[name] = function() {
 		self.queue.push({
 			type: "run",
 			context: this,
 			args: arguments
 		});
 	}
+
+	// Remap
+	self.run = self;
 
 	// Where the list of function calls are stored.
 	self.queue = [];
@@ -53,7 +56,7 @@ window.abstractComponent = function(name) {
 					chain.push({
 						method: method,
 						context: this,
-						args: arguments;
+						args: arguments
 					});
 				};
 
