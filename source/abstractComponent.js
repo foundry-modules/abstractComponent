@@ -36,6 +36,22 @@ window.abstractComponent = function() {
 		});
 	}
 
+	self.module = function() {
+		self.queue.push({
+			method: "module",
+			context: this,
+			args: arguments
+		});
+	}
+
+	self.template = function() {
+		self.queue.push({
+			method: "template",
+			context: this,
+			args: arguments
+		});
+	}
+
 	self.require = function() {
 
 		var chain = [{
