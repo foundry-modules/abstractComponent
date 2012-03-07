@@ -90,4 +90,4 @@ window.abstractComponent = function() {
 	}
 
 	return self;
-}
+};
