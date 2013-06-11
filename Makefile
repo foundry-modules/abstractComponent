@@ -1,11 +1,4 @@
-include ../../build/modules.mk
-
 MODULE = abstractComponent
-FILENAME = ${MODULE}.js
-SOURCE = ${SOURCE_DIR}/${MODULE}.js
-PRODUCTION = ${PRODUCTION_DIR}/${FILENAME}
-DEVELOPMENT = ${DEVELOPMENT_DIR}/${FILENAME}
+all: copy minify
 
-all:
-	cp ${SOURCE} ${DEVELOPMENT}
-	${UGLIFYJS} ${DEVELOPMENT} > ${PRODUCTION}
+include ../../build/module.single.mk
