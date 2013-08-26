@@ -11,6 +11,8 @@
  *
  */
 
+ if (window.abstractComponent!==undefined) return;
+
 window.abstractComponent = function() {
 
 	var self = function() {
