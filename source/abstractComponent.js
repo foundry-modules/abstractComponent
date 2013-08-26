@@ -11,7 +11,7 @@
  *
  */
 
- if (window.abstractComponent!==undefined) return;
+if (!window.abstractComponent) {
 
 window.abstractComponent = function() {
 
@@ -93,3 +93,5 @@ window.abstractComponent = function() {
 
 	return self;
 };
+
+}
